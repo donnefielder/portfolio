@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photoshop Projects - Jip Hugo Vrouwenvelder</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#fafafa;margin:0}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{background:white;padding:30px 20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.1);font-family:"Comic Sans MS",cursive}
+nav ul{display:flex;justify-content:center;list-style:none;padding:0;margin:20px 0 0;gap:25px}
+nav a{padding:8px 12px;border-radius:5px}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-content{
+display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+background:white;box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:6px;min-width:220px;z-index:100;text-align:center
+}
+.dropdown-content a{display:block;padding:10px 15px;white-space:nowrap}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* GRID */
+.projects-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:60px;
+padding:60px 40px 100px;
+max-width:1400px;
+margin:auto
+}
+
+.project-card{
+background:white;border-radius:20px;overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;cursor:pointer
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+.image-wrap{position:relative;overflow:hidden}
+.image-wrap img{width:100%;height:420px;object-fit:cover;transition:.5s}
+.project-card:hover img{transform:scale(1.06)}
+
+.image-wrap::after{
+content:"▶ View Project";position:absolute;inset:0;
+background:rgba(0,0,0,.45);color:white;font-size:30px;
+font-family:"Comic Sans MS",cursive;
+display:flex;align-items:center;justify-content:center;
+opacity:0;transition:.35s
+}
+.project-card:hover .image-wrap::after{opacity:1}
+
+.project-header{padding:28px 40px 10px;font-family:"Comic Sans MS",cursive}
+.project-header h3{margin:0;font-size:28px}
+.project-info{padding:0 40px 30px;font-size:17px;color:#555}
+
+/* MODAL */
+.modal-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,.65);
+backdrop-filter:blur(8px);
+display:none;align-items:center;justify-content:center;z-index:999
+}
+.modal-content{
+background:white;width:96vw;height:94vh;border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+display:flex;flex-direction:column;animation:pop .25s ease-out
+}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-header{
+padding:20px 40px;display:flex;justify-content:space-between;align-items:center;
+font-family:"Comic Sans MS",cursive;border-bottom:1px solid #eee
+}
+.close-btn{font-size:30px;cursor:pointer;border:none;background:none}
+
+.modal-body{
+padding:35px 80px 60px;line-height:1.8;font-size:18px;overflow-y:auto
+}
+.modal-body img{
+width:100%;
+border-radius:12px;
+margin-bottom:30px;
+cursor:zoom-in;
+}
+
+/* MARIO IMAGES — FULL WIDTH + MORE SPACE BELOW */
+.modal-body img.small-modal-img{
+width:100%;
+max-width:none;
+display:block;
+margin:0 auto 60px;
+}
+
+/* FULLSCREEN IMAGE VIEWER */
+.image-viewer{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:2000
+}
+.image-viewer img{
+max-width:96%;
+max-height:96%;
+border-radius:10px
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+.projects-container{grid-template-columns:1fr;padding:40px 20px}
+.image-wrap img{height:300px}
+.modal-body{padding:25px}
+.modal-body img.small-modal-img{width:100%}
+}
+
+footer{
+background:white;text-align:center;padding:20px;margin-top:60px;
+box-shadow:0 -2px 5px rgba(0,0,0,.1)
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Photoshop Projects</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="projects-container">
+
+<!-- MARIO ZEEDIJK -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/Mario_Zeedijk.png"></div>
+<div class="project-header"><h3>Mario Kart DS Zeedijk</h3></div>
+<div class="project-info"><p>Photo manipulation + gaming crossover.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/Mario_Zeedijk.png" class="small-modal-img" onclick="openImage(this.src)">
+<p>This image is a personal project I created at the Zeedijk near my hometown, Sexbierum. I wanted to blend reality with fantasy, transforming a familiar landscape into something playful and unexpected. By integrating elements from Mario Kart, I aimed to evoke a sense of nostalgia and excitement, imagining what it would be like if video games merged with the real world.</p>
+<p>This piece represents my love for both digital art and gaming, as well as my ability to combine different mediums to tell a visual story. The process of creating this image was both fun and rewarding, allowing me to explore perspective, composition, and digital manipulation. Seeing the final result gave me a sense of accomplishment, as it successfully captures the surreal yet familiar world I envisioned.</p>
+</div>
+</div>
+
+<!-- MARIO KRAAN -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/Mario_Kraan.png"></div>
+<div class="project-header"><h3>New Super Mario Bros. Crane</h3></div>
+<div class="project-info"><p>Photo manipulation + pixel art.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/Mario_Kraan.png" class="small-modal-img" onclick="openImage(this.src)">
+<p>This image is a creative project I made in Groningen, on top of the Forum Groningen. I wanted to merge reality with the pixelated world of Super Mario, turning an ordinary crane into a level from the game. The idea was to play with perspective and scale, making it feel like Mario is on the edge of a daring jump into the unknown.</p>
+<p>This piece reflects my love for blending digital art with real-world photography. It was fun to create and gave me a chance to experiment with composition and visual storytelling. Seeing the final result made me feel like I had successfully brought a bit of childhood nostalgia into the modern cityscape.</p>
+</div>
+</div>
+
+<!-- SUNSHINE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/SUNSHINE.png"></div>
+<div class="project-header"><h3>SUNSHINE</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/SUNSHINE.png" onclick="openImage(this.src)">
+<p>After using alot of paper textures I had found the style I liked working with. I made this design to showcase sunshine and happiness, while also having a grim undertone. I find it fun to make designs that have double meanings and can be interperated differently by the eyes that look at it.</p>
+</div>
+</div>
+
+<!-- FEELING -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/FEELING.png"></div>
+<div class="project-header"><h3>FEELING</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/FEELING.png" onclick="openImage(this.src)">
+<p>While making this design I was feeling very happy so the design is focused on love. I had just started a relationship with my girlfriend and one of the ways process such a strong feeling is through art. I showcase a lot of butterflies which obviously represent feeling in love.</p>
+</div>
+</div>
+
+<!-- GRASPING -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/GRASPING.png"></div>
+<div class="project-header"><h3>GRASPING</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/GRASPING.png" onclick="openImage(this.src)">
+<p>This a design that I made while practicing my design skills. The feeling I want the design to give of is emptiness and the idea of reaching for something when it seems virtually impossible to grab onto something.</p>
+</div>
+</div>
+
+<!-- MEMORIES -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/Memories.png"></div>
+<div class="project-header"><h3>MEMORIES</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/Memories.png" onclick="openImage(this.src)">
+<p>Memories are like doors, we open them to revisit the past, but some remain locked, fading with time. This design takes the shape of an SD card, a symbol of stored memories, with a door as the cover image, representing the passage between past and present.</p>
+<p>I wanted to capture the nostalgic feeling of looking back, where moments feel both vivid and distant. Using textures and subtle grunge elements, I aimed to create a design that feels worn yet timeless, like an old memory resurfacing. This piece reflects how our past shapes us, even when some doors remain closed.</p>
+</div>
+</div>
+
+<!-- NOTHING -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/NOTHING.png"></div>
+<div class="project-header"><h3>NOTHING</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/NOTHING.png" onclick="openImage(this.src)">
+<p>Finding my style was quite hard at first but I really like working with paper textures and grunch. The feeling of nothing is all around us. Sometimes I feel so tiny in such a big world. In the design I want to give off the idea that sometimes we have to embrace nothingness.</p>
+</div>
+</div>
+
+<!-- TIME -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/TIME.png"></div>
+<div class="project-header"><h3>TIME</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/TIME.png" onclick="openImage(this.src)">
+<p>Nostalgia is the main focus of the design. I grew up with alot of old media because my dad likes them alot. I love thinking back to my youth and how much fun I had with the same stuff I still use and watch to this day.</p>
+</div>
+</div>
+
+<!-- IT'S OKAY TO BE SAD -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/IT'S OKAY TO BE SAD.png"></div>
+<div class="project-header"><h3>IT'S OKAY TO BE SAD</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/IT'S OKAY TO BE SAD.png" onclick="openImage(this.src)">
+<p>In the current day and age alot of people are struggling with issues that other people may find strange. I find this idea of not being able to express your feelings and stuff that you are sturgling with strange. Hence the: IT’S OKAY TO BE SAD. Because you can be sad even if other people might find it unjustifiable.</p>
+</div>
+</div>
+
+<!-- INVISIBLE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/INVISIBLE.png"></div>
+<div class="project-header"><h3>INVISIBLE</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/INVISIBLE.png" onclick="openImage(this.src)">
+<p>I have grown to like this design more than I used to. Designing this I was watching one of my favorite tv series: Fire Force. There is not really a meaning for this design but it can be interpreted as feeling invisible while there still being a lot of eyes on you. Thats one of the reasons I have grown to like the design more.</p>
+</div>
+</div>
+
+<!-- BRAINWASH (LAST) -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Photoshop/BRAINWASH.png"></div>
+<div class="project-header"><h3>BRAINWASH</h3></div>
+<div class="project-info"><p>Photoshop artwork.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Photoshop/BRAINWASH.png" onclick="openImage(this.src)">
+<p>I challenged myself with this design to use a mini-mal amount of colour. This design represents alot of things, I mainly get the feeling of hypnotising love and someone you hold dear to your heart.</p>
+</div>
+</div>
+
+</section>
+
+<footer>© 2025 Jip Hugo Vrouwenvelder. All rights reserved.</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<button class="close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+
+<!-- IMAGE VIEWER -->
+<div class="image-viewer" id="imageViewer" onclick="closeImage()">
+<img id="viewerImg">
+</div>
+
+<script>
+function openModal(card){
+document.getElementById("modalTitle").innerText=card.querySelector("h3").innerText;
+document.getElementById("modalBody").innerHTML=card.querySelector(".project-details").innerHTML;
+document.getElementById("projectModal").style.display="flex";
+document.body.style.overflow="hidden";
+}
+
+function closeModal(e){
+if(!e||e.target.id==="projectModal"){
+document.getElementById("projectModal").style.display="none";
+document.getElementById("modalBody").innerHTML="";
+document.body.style.overflow="auto";
+}}
+
+function openImage(src){
+document.getElementById("viewerImg").src = src;
+document.getElementById("imageViewer").style.display = "flex";
+}
+
+function closeImage(){
+document.getElementById("imageViewer").style.display = "none";
+document.getElementById("viewerImg").src = "";
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){
+closeModal();
+closeImage();
+}
+});
+</script>
+
+</body>
+</html>

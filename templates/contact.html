@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me - Jip Hugo Vrouwenvelder</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#fafafa;
+margin:0
+}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{
+background:white;
+padding:30px 20px;
+text-align:center;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+font-family:"Comic Sans MS",cursive
+}
+nav ul{
+display:flex;
+justify-content:center;
+list-style:none;
+padding:0;
+margin:20px 0 0;
+gap:25px
+}
+nav a{
+padding:8px 12px;
+border-radius:5px
+}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+
+.dropdown-content{
+display:none;
+position:absolute;
+top:100%;
+left:50%;
+transform:translateX(-50%);
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:6px;
+min-width:220px;
+z-index:100;
+text-align:center
+}
+.dropdown-content a{
+display:block;
+padding:10px 15px;
+white-space:nowrap
+}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* CONTACT SECTION */
+.contact-container{
+max-width:800px;
+margin:80px auto 120px;
+background:white;
+padding:50px 70px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.15)
+}
+
+.contact-container h2{
+font-family:"Comic Sans MS",cursive;
+margin-top:0;
+text-align:center;
+font-size:32px
+}
+
+.contact-container p{
+text-align:center;
+font-size:18px;
+color:#555;
+margin-bottom:40px
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:25px
+}
+
+label{
+font-weight:bold;
+font-size:16px
+}
+
+input, textarea{
+padding:14px 16px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:16px;
+font-family:Arial,sans-serif;
+resize:none
+}
+
+input:focus, textarea:focus{
+outline:none;
+border-color:#999
+}
+
+button{
+align-self:center;
+padding:14px 40px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:18px;
+font-family:"Comic Sans MS",cursive;
+background:#4444ff;
+color:white;
+transition:.3s
+}
+
+button:hover{
+opacity:.85
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.contact-container{
+margin:40px 20px 80px;
+padding:35px 25px
+}
+}
+
+footer{
+background:white;
+text-align:center;
+padding:20px;
+box-shadow:0 -2px 5px rgba(0,0,0,.1);
+margin-top:60px
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Contact Me</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="contact-container">
+
+<h2>Get in Touch</h2>
+<p>If you would like to contact me for collaborations, questions, or opportunities, feel free to send me a message below.</p>
+
+<form method="post" action="#">
+  
+  <div>
+    <label for="name">Your Name</label><br>
+    <input type="text" id="name" name="name" required>
+  </div>
+
+  <div>
+    <label for="email">Your Email</label><br>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div>
+    <label for="message">Message</label><br>
+    <textarea id="message" name="message" rows="6" required></textarea>
+  </div>
+
+  <button type="submit">Send Message</button>
+
+</form>
+
+</section>
+
+<footer>
+© 2025 Jip Hugo Vrouwenvelder. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>After Effects Projects - Jip Hugo Vrouwenvelder</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#fafafa;margin:0}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{background:white;padding:30px 20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.1);font-family:"Comic Sans MS",cursive}
+nav ul{display:flex;justify-content:center;list-style:none;padding:0;margin:20px 0 0;gap:25px}
+nav a{padding:8px 12px;border-radius:5px}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-content{
+display:none;
+position:absolute;
+top:100%;
+left:50%;
+transform:translateX(-50%);
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:6px;
+min-width:220px;
+z-index:100;
+text-align:center
+}
+.dropdown-content a{display:block;padding:10px 15px}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* GRID — MATCHES BLENDER */
+.projects-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:60px;
+padding:60px 20px 100px;
+max-width:1400px;
+margin:auto
+}
+
+/* PROJECT CARDS */
+.project-card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+cursor:pointer
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+.image-wrap{position:relative;overflow:hidden}
+.image-wrap img{width:100%;height:420px;object-fit:cover;transition:.5s}
+.project-card:hover img{transform:scale(1.06)}
+
+.image-wrap::after{
+content:"▶ View Project";
+position:absolute;inset:0;
+background:rgba(0,0,0,.45);
+color:white;font-size:30px;
+font-family:"Comic Sans MS",cursive;
+display:flex;align-items:center;justify-content:center;
+opacity:0;transition:.35s
+}
+.project-card:hover .image-wrap::after{opacity:1}
+
+.project-header{padding:28px 40px 10px;font-family:"Comic Sans MS",cursive}
+.project-header h3{margin:0;font-size:30px}
+.project-info{padding:0 40px 30px;font-size:18px;color:#555}
+
+/* MODAL */
+.modal-overlay{
+position:fixed;inset:0;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(8px);
+display:none;align-items:center;justify-content:center;z-index:999
+}
+.modal-content{
+background:white;
+width:96vw;height:94vh;border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+display:flex;flex-direction:column;
+animation:pop .25s ease-out
+}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-header{
+padding:20px 40px;
+display:flex;justify-content:space-between;align-items:center;
+font-family:"Comic Sans MS",cursive;border-bottom:1px solid #eee
+}
+.close-btn{font-size:30px;cursor:pointer;border:none;background:none}
+
+.modal-body{
+padding:35px 80px 60px;
+line-height:1.8;font-size:18px;overflow-y:auto
+}
+.modal-body h3{font-family:"Comic Sans MS",cursive;margin-top:40px}
+.modal-body iframe{
+width:100%;height:720px;border-radius:12px;margin-bottom:30px
+}
+
+footer{
+background:white;text-align:center;padding:20px;margin-top:60px;
+box-shadow:0 -2px 5px rgba(0,0,0,.1)
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+.projects-container{grid-template-columns:1fr;padding:40px 20px}
+.image-wrap img{height:300px}
+.modal-body iframe{height:360px}
+.modal-body{padding:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>After Effects Projects</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="projects-container">
+
+<!-- 1 BREAKING BAD -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/uSUdpmL71Hk/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Breaking Bad edit - RUN</h3></div>
+<div class="project-info"><p>3D camera experiment and cinematic tribute.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/uSUdpmL71Hk" allowfullscreen></iframe>
+<p>As a personal challenge to elevate my After Effects skills, I created this Breaking Bad edit using a 3D camera. The goal was to experiment with dynamic camera movements, depth, and compositing, while paying tribute to one of my favorite TV series. Every shot was carefully timed and designed to match the intensity of the music and the iconic atmosphere of the show. This project allowed me to push the creative limits of After Effects and refine my workflow for cinematic edits.</p>
+</div>
+</div>
+
+<!-- 2 FARGO -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/zCAadrIdDvU/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Fargo edit - Behind you</h3></div>
+<div class="project-info"><p>Minimalist tension-driven cinematic edit.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/zCAadrIdDvU" allowfullscreen></iframe>
+<p>This short edit was created as a stylistic experiment to capture the tension and bleak beauty of Fargo Season 1. Centered around Lorne Malvo, the mysterious and unsettling force of the story, the piece explores themes of chaos, morality, and manipulation through a cold, cinematic lens. I focused on emphasizing the show's stark atmosphere, dark humor, and quiet intensity by blending sharp cuts with slow, deliberate pacing. Using Adobe After Effects, I enhanced the visuals with subtle grain, desaturated tones, and moody lighting to mirror Fargo’s distinct, snow-covered world. A minimalist concept that channels menace through mood and silence.</p>
+</div>
+</div>
+
+<!-- 3 TV GLOW -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/rzXsdlD0IRc/maxresdefault.jpg"></div>
+<div class="project-header"><h3>I Saw the TV Glow edit - You need to help me</h3></div>
+<div class="project-info"><p>VHS-style surreal nostalgic edit.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/rzXsdlD0IRc" allowfullscreen></iframe>
+<p>This short edit was created as a creative exercise to explore VHS-style effects and nostalgic visual storytelling. I chose I Saw the TV Glow as the theme because it's one of my favorite films, its surreal atmosphere, haunting imagery, and emotional depth blend beautifully with the analog aesthetic. My focus was on recreating authentic VHS distortion, static, and chromatic aberration in Adobe After Effects, while keeping the pacing slow and dreamlike. A simple concept, executed with care and style.</p>
+</div>
+</div>
+
+<!-- 4 NIGHTMARE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/8w13Y2Q3om4/maxresdefault.jpg"></div>
+<div class="project-header"><h3>The Nightmare Before Christmas edit - My girl</h3></div>
+<div class="project-info"><p>Romantic tribute blending fantasy and memory.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/8w13Y2Q3om4" allowfullscreen></iframe>
+<p>This short edit was created as a heartfelt tribute inspired by The Nightmare Before Christmas and my girlfriend, who encouraged me to make it. We both share a love for the film, it’s our favorite Christmas movie, and I chose the song We Fell in Love in October because it reflects the time our story began. The edit blends romance and nostalgia, weaving together the film’s gothic charm with the warmth of personal memory. I focused on creating a dreamy, emotional tone through soft transitions, gentle lighting, and a sense of bittersweet magic. A love letter in motion, where Halloween meets Christmas, and fiction meets feeling.</p>
+</div>
+</div>
+
+<!-- 5 LITTLE MISS SUNSHINE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/odrY--U5ZRs/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Little Miss Sunshine edit - Oh look, the poison root</h3></div>
+<div class="project-info"><p>Grunge-inspired emotional exploration.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/odrY--U5ZRs" allowfullscreen></iframe>
+<p>This short edit was created as a stylistic exploration inspired by Little Miss Sunshine. I aimed to capture the film’s raw honesty and offbeat warmth through a grunge-inspired aesthetic layered with paper textures and analog imperfections. The rough edges and tactile feel reflect the film’s themes of imperfection, family, and acceptance. While I’m not entirely proud of the final result, this piece represents an important step in allowing myself to create without the pressure of perfection, embracing experimentation as part of the artistic process.</p>
+</div>
+</div>
+
+<!-- 6 MANCHESTER -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/0YqoAyphG2I/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Manchester by the Sea edit - Fallen to the ground</h3></div>
+<div class="project-info"><p>CRT-inspired emotional study of grief.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/0YqoAyphG2I" allowfullscreen></iframe>
+<p>This short edit was created as an emotional study of grief and isolation, inspired by Manchester by the Sea. I wanted to capture the film’s quiet heartbreak and sense of lingering loss through a nostalgic CRT-style aesthetic. The soft glow, screen flicker, and analog distortion serve as metaphors for memory, fragile, imperfect, and fading over time. My focus was on subtle pacing, melancholic color grading, and atmospheric sound to evoke the film’s tone of stillness and sorrow. A personal exploration of emotion, framed through the static of an old television.</p>
+</div>
+</div>
+
+<!-- 7 WHERE'S MY HEAD AT -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/YoJwzoI373s/maxresdefault.jpg"></div>
+<div class="project-header"><h3>where's my head at_</h3></div>
+<div class="project-info"><p>Call of Duty contest cinematic edit.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/YoJwzoI373s" allowfullscreen></iframe>
+<p>This short edit was created as a creative exercise and submission for a Call of Duty edit contest. I focused on combining cinematic shots with dynamic pacing to match the intensity and energy of the game. Using Adobe After Effects, I experimented with motion blur, color grading, and impactful transitions to enhance the action and keep the rhythm tight. It was a chance to push my editing skills and storytelling within a high-octane, competitive context. A bold concept, executed with precision.</p>
+</div>
+</div>
+
+<!-- 8 COFFIN CHANGE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/3PmW_5SipwI/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Coffin Change</h3></div>
+<div class="project-info"><p>Music-driven contest edit.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/3PmW_5SipwI" allowfullscreen></iframe>
+<p>This edit was made for a contest and inspired by one of my favorite songs, which helped shape the rhythm, mood, and emotional tone of the piece. I aimed to sync visuals tightly to the music, using pacing, transitions, and subtle effects to let both the song and footage complement each other. Created in Adobe After Effects, the edit was a personal challenge to blend sound and imagery in a way that feels both impactful and cohesive. A passion project, executed with heart.</p>
+</div>
+</div>
+
+<!-- 9 DEATH NOTE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/51MdzUD-udg/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Death Note edit - I win!</h3></div>
+<div class="project-info"><p>Retro VHS-style anime edit.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/51MdzUD-udg" allowfullscreen></iframe>
+<p>This short edit was created as a creative exercise to explore VHS-style effects and nostalgic visual storytelling. I chose Death Note as the theme due to its intense atmosphere and iconic characters, which pair well with the retro analog look. My focus was on learning how to recreate authentic VHS distortion, static, and chromatic aberration, all within Adobe After Effects while keeping the pacing and transitions engaging but minimal. A simple concept, executed with style.</p>
+</div>
+</div>
+
+</section>
+
+<footer>© 2025 Jip Hugo Vrouwenvelder. All rights reserved.</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<button class="close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+
+<script>
+function openModal(card){
+document.getElementById("modalTitle").innerText=card.querySelector("h3").innerText;
+document.getElementById("modalBody").innerHTML=card.querySelector(".project-details").innerHTML;
+document.getElementById("projectModal").style.display="flex";
+document.body.style.overflow="hidden";
+}
+
+function closeModal(e){
+if(!e||e.target.id==="projectModal"){
+document.getElementById("projectModal").style.display="none";
+document.getElementById("modalBody").innerHTML="";
+document.body.style.overflow="auto";
+}}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){closeModal();}
+});
+</script>
+
+</body>
+</html>

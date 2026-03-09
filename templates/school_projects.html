@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Projects</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#fafafa;margin:0}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{background:white;padding:30px 20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.1);font-family:"Comic Sans MS",cursive}
+nav ul{display:flex;justify-content:center;list-style:none;padding:0;margin:20px 0 0;gap:25px}
+nav a{padding:8px 12px;border-radius:5px}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-content{
+display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+background:white;box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:6px;min-width:220px;z-index:100;text-align:center
+}
+.dropdown-content a{display:block;padding:10px 15px}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* GRID — MATCHES BLENDER */
+.projects-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:60px;
+padding:60px 20px 100px;
+max-width:1400px;
+margin:auto
+}
+
+/* PROJECT CARDS */
+.project-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.15);transition:.3s;cursor:pointer}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+.image-wrap{position:relative;overflow:hidden}
+.image-wrap img{width:100%;height:420px;object-fit:cover;transition:.5s}
+.project-card:hover img{transform:scale(1.06)}
+
+.image-wrap::after{
+content:"▶ View Project";position:absolute;inset:0;
+background:rgba(0,0,0,.45);color:white;font-size:30px;
+font-family:"Comic Sans MS",cursive;display:flex;align-items:center;justify-content:center;
+opacity:0;transition:.35s
+}
+.project-card:hover .image-wrap::after{opacity:1}
+
+.project-header{padding:28px 40px 10px;font-family:"Comic Sans MS",cursive}
+.project-header h3{margin:0;font-size:30px}
+.project-info{padding:0 40px 30px;font-size:18px;color:#555}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:999}
+.modal-content{background:white;width:96vw;height:94vh;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.4);display:flex;flex-direction:column;animation:pop .25s ease-out}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-header{padding:20px 40px;display:flex;justify-content:space-between;align-items:center;font-family:"Comic Sans MS",cursive;border-bottom:1px solid #eee}
+.close-btn{font-size:30px;cursor:pointer;border:none;background:none}
+
+.modal-body{padding:35px 80px 60px;line-height:1.8;font-size:18px;overflow-y:auto}
+.modal-body iframe{width:100%;height:720px;border-radius:12px;margin-bottom:30px}
+.modal-body img{
+width:100%;
+max-width:1100px;
+display:block;
+margin:40px auto;
+border-radius:12px
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.projects-container{grid-template-columns:1fr}
+.image-wrap img{height:300px}
+.modal-body iframe{height:360px}
+.modal-body{padding:25px}
+}
+
+footer{background:white;text-align:center;padding:20px;margin-top:60px;box-shadow:0 -2px 5px rgba(0,0,0,.1)}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>School Projects</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="projects-container">
+
+<!-- ESCAPE ROOM PROJECT -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+  <img src="https://img.youtube.com/vi/YvUVgtTe2mU/maxresdefault.jpg">
+</div>
+<div class="project-header"><h3>Digital Escape Room – Municipality of Leeuwarden</h3></div>
+<div class="project-info"><p>Educational digital escape room prototype focused on sustainability.</p></div>
+
+<div class="project-details" style="display:none;">
+
+<iframe src="https://www.youtube.com/embed/YvUVgtTe2mU" allowfullscreen></iframe>
+
+<p>I made the escape room last year. Since February, I have been working with my project team: Sijb, Hylke, Marijn, and Lorenzo on a meaningful assignment for the Municipality of Leeuwarden.</p>
+
+<p>Our task was to develop a digital escape room prototype designed to engage children and raise awareness about energy-saving practices. The goal was not only to inform the young audience but also to empower them to inspire and educate their parents on the importance of sustainability in daily life.</p>
+
+<p>This project challenged us to balance creative game design with educational value, resulting in an interactive experience that is both fun and informative. As a team, we collaborated closely from concept to prototype, using tools like Blender and other design software to bring the digital environment to life.</p>
+
+<p>Throughout the project, I developed both technical and organizational skills, from managing the workflow and communicating with stakeholders, to translating abstract educational goals into engaging gameplay. This portfolio showcases the growth I experienced while contributing to a real-world project that aims to make a positive impact.</p>
+
+<img src="/static/IKEA.jpg" alt="Escape Room Project Team Photo">
+
+</div>
+</div>
+
+<!-- 3D PIPELINE TOOL PROJECT -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+  <img src="https://img.youtube.com/vi/GGOtEagboyk/maxresdefault.jpg">
+</div>
+<div class="project-header"><h3>3D Pipeline Tool – Workflow Optimization</h3></div>
+<div class="project-info"><p>Custom tool to improve organization and efficiency in Blender workflows.</p></div>
+
+<div class="project-details" style="display:none;">
+
+<iframe src="https://www.youtube.com/embed/GGOtEagboyk" allowfullscreen></iframe>
+
+<p>This project is a custom 3D pipeline tool that I built for myself and Sijb to create a more structured, organized, and efficient workflow when working in Blender and related software. We noticed that our projects were becoming increasingly complex, with many files, versions, assets, and exports scattered across folders. This made it harder to stay organized and slowed down our production process.</p>
+
+<p>The goal of this tool was to streamline how we manage projects, automate repetitive steps, and enforce a clear folder and naming structure. By creating a dedicated pipeline, we were able to reduce mistakes, save time, and keep our projects consistent and clean. It also helped us work more professionally, similar to how pipelines are used in real production environments.</p>
+
+<p>Building this tool was challenging and required a lot of problem-solving. I had to think logically about workflows, user interaction, file management, and edge cases. It took a significant amount of time and iteration to get everything working properly. There were many moments where things broke or behaved unexpectedly, which forced me to debug carefully and rethink parts of the system.</p>
+
+<p>Through this project, I learned how important structure and automation are in creative pipelines. I gained a better understanding of how tools can support artists instead of slowing them down. I also improved my technical thinking, planning skills, and ability to translate practical needs into functional systems.</p>
+
+<p>Although I am very happy with the end result, I am also aware that the tool could be improved a lot further. There are many features that could be expanded, optimized, or made more user-friendly. However, this project represents a strong learning milestone for me, and it gave me confidence in building tools that actively improve production workflows while continuing to learn and grow.</p>
+
+</div>
+</div>
+
+</section>
+
+<footer>© 2025 Jip Hugo Vrouwenvelder. All rights reserved.</footer>
+
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<button class="close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+
+<script>
+function openModal(card){
+modalTitle.innerText=card.querySelector("h3").innerText;
+modalBody.innerHTML=card.querySelector(".project-details").innerHTML;
+projectModal.style.display="flex";
+document.body.style.overflow="hidden";
+}
+function closeModal(e){
+if(!e||e.target.id==="projectModal"){
+projectModal.style.display="none";
+modalBody.innerHTML="";
+document.body.style.overflow="auto";
+}}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+</script>
+
+</body>
+</html>

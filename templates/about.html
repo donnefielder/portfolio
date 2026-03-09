@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me - Jip Hugo Vrouwenvelder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+
+    a { text-decoration: none; color: black; }
+
+    header {
+      background-color: white;
+      color: black;
+      padding: 30px 20px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      gap: 25px;
+      align-items: center;
+    }
+
+    nav a {
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    nav a:hover { background-color: #f0f0f0; }
+
+    .dropdown-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+
+    nav li:hover .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* ✅ CENTERED + WIDER DROPDOWN, NO WRAP */
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border-radius: 6px;
+      min-width: 240px;
+      z-index: 100;
+      text-align: center;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 15px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    nav ul li { position: relative; }
+    nav li:hover .dropdown-content { display: block; }
+    .dropdown-content a:hover { background-color: #eee; }
+
+    /* === ABOUT SECTION === */
+    #about {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 80px;
+      flex-wrap: wrap;
+      padding: 60px 100px;
+      margin: 60px auto;
+      max-width: 1400px;
+    }
+
+    /* === TEXT BOX === */
+    .about-text {
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      padding: 40px 60px;
+      flex: 1;
+      min-width: 400px;
+      max-width: 900px;
+    }
+
+    .about-text h3 {
+      font-family: "Comic Sans MS", "Comic Sans", cursive;
+      font-size: 26px;
+      margin-top: 0;
+    }
+
+    .about-text p {
+      line-height: 1.7;
+      font-size: 18px;
+    }
+
+    footer {
+      background-color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 900px) {
+      #about {
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>About Me</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li>
+        <a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+        <div class="dropdown-content">
+          <a href="/blender-projects">Blender Projects</a>
+          <a href="/after-effects">After Effects Projects</a>
+          <a href="/illustrator">Illustrator Projects</a>
+          <a href="/photoshop">Photoshop Projects</a>
+          <a href="/internship">Internship Projects</a>
+          <a href="/school">School Projects</a>
+        </div>
+      </li>
+      <li><a href="/about">About Me</a></li>
+      <li><a href="/contact">Contact Me</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="about-text">
+    <h3>My Artist Statement</h3>
+    <p>As an animator, my passion lies in creating compelling stories through movement and design. Animation has always been my way of blending art and technology to evoke emotions and tell stories that connect with people on a deep level. I’m particularly drawn to the power of animation to communicate without words, something I first recognized watching Wall-E. The film’s ability to convey emotion through silent, visual storytelling sparked my interest in the field. Later, Spider-Man: Into the Spider-Verse solidified my desire to explore 3D animation. Its vibrant, groundbreaking style and emotional depth continue to inspire me to push the boundaries of character animation.</p>
+
+    <p>In my work, I focus on crafting characters that are not only visually engaging but also accessible to diverse audiences, particularly children. I believe in the transformative potential of animation to educate and inspire, which drives me to create designs that connect with and excite younger viewers. As I develop my skills, I aim to create characters that blend technical precision with emotional resonance, characters that feel alive and speak to a wide range of viewers.</p>
+
+    <p>My dream is to work in 3D animation, where I can bring characters to life in a way that not only entertains but also leaves a lasting impact. I’m committed to continuous learning, experimenting with new tools, and refining my process, all in the pursuit of creating animations that inspire joy, empathy, and wonder.</p>
+
+    <h3>What Keeps Me Going</h3>
+    <p>My motivation started from an early age. I’ve been captivated by the world of animation. When I was four years old, I first got to watch the movie: Wall-E. This movie sparked something inside me that made me love animation to this day. Now that I am older my love for animation only grew bigger. In recent years I have been studying all forms of animation books, videos and movies.</p>
+
+    <p>Later in life I watched Spider-Man into the Spider-Verse for the first time. I had been a graphic designer for quite a while at this point. After watching the movie, I was shocked and became absolutely determined to become an animator myself. It was a visual masterpiece and, in my opinion, not a single movie compares animation wise.</p>
+
+    <p>I actually started researching and reading all sorts of books on animation. Two of my favourite books that have inspired me alot on my animation journey are The Illusion of Life and The Animator’s Survival Kit. These two books are amazing and have all sorts of techniques I had no idea could be used. For example: smearing, a technique commonly used in Looney Tunes.</p>
+
+    <p>In my search for an internship, I came across Kweekvijver Noord. Where I studied the art of animation until the 9th of June. Here is where my animation skills really took off and where I find myself daydreaming of a future as an animator.</p>
+
+    <p>In conclusion, my love for animation has been a constant source of inspiration in my life, and I’m thrilled to keep animating.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Jip Hugo Vrouwenvelder. All rights reserved.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Internship Projects - Jip Hugo Vrouwenvelder</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#fafafa;margin:0}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{background:white;padding:30px 20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.1);font-family:"Comic Sans MS",cursive}
+nav ul{display:flex;justify-content:center;list-style:none;padding:0;margin:20px 0 0;gap:25px}
+nav a{padding:8px 12px;border-radius:5px}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-content{
+display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);
+background:white;box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:6px;min-width:220px;z-index:100;text-align:center
+}
+.dropdown-content a{display:block;padding:10px 15px}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* GRID — MATCHES BLENDER / AE */
+.projects-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:60px;
+padding:60px 20px 100px;
+max-width:1400px;
+margin:auto
+}
+
+.project-card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.15);transition:.3s;cursor:pointer}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+.image-wrap{position:relative;overflow:hidden}
+.image-wrap img{width:100%;height:420px;object-fit:cover;transition:.5s}
+.project-card:hover img{transform:scale(1.06)}
+
+.image-wrap::after{
+content:"▶ View Project";position:absolute;inset:0;
+background:rgba(0,0,0,.45);color:white;font-size:30px;
+font-family:"Comic Sans MS",cursive;display:flex;
+align-items:center;justify-content:center;opacity:0;transition:.35s
+}
+.project-card:hover .image-wrap::after{opacity:1}
+
+.project-header{padding:28px 40px 10px;font-family:"Comic Sans MS",cursive}
+.project-header h3{margin:0;font-size:30px}
+.project-info{padding:0 40px 30px;font-size:18px;color:#555}
+
+/* MODAL */
+.modal-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,.65);
+backdrop-filter:blur(8px);
+display:none;align-items:center;justify-content:center;z-index:999
+}
+.modal-content{
+background:white;width:96vw;height:94vh;border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+display:flex;flex-direction:column;animation:pop .25s ease-out
+}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-header{
+padding:20px 40px;display:flex;justify-content:space-between;align-items:center;
+font-family:"Comic Sans MS",cursive;border-bottom:1px solid #eee;flex-shrink:0
+}
+.close-btn{font-size:30px;cursor:pointer;border:none;background:none}
+
+.modal-body{
+padding:35px 80px 60px;line-height:1.8;font-size:18px;overflow-y:auto
+}
+.modal-body iframe{width:100%;height:720px;border-radius:12px;margin-bottom:30px}
+
+/* MOBILE */
+@media(max-width:1000px){
+.projects-container{grid-template-columns:1fr}
+.image-wrap img{height:300px}
+.modal-body iframe{height:360px}
+.modal-body{padding:25px}
+}
+
+footer{
+background:white;text-align:center;padding:20px;margin-top:60px;
+box-shadow:0 -2px 5px rgba(0,0,0,.1)
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Internship Projects</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="projects-container">
+
+<!-- CAMPFIRE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/jSmICIdwnj4/hqdefault.jpg"></div>
+<div class="project-header"><h3>Campfire Animation</h3></div>
+<div class="project-info"><p>First internship skill test animation.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/jSmICIdwnj4" allowfullscreen></iframe>
+<p>My internship at Kweekvijver Noord started with an interview. After having the interview I got a call that they wanted me to work with them.</p>
+<p>They also wanted me to do some animation work to showcase where my skills were at. So after this call I got to work and made this animation.</p>
+</div>
+</div>
+
+<!-- SWIMMER -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/0hyV7D8Vnz8/hqdefault.jpg"></div>
+<div class="project-header"><h3>Swimmer Animation</h3></div>
+<div class="project-info"><p>Character animation practice.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/0hyV7D8Vnz8" allowfullscreen></iframe>
+<p>After having worked on the Campfire animation I had confidence to make something a little bit more complicated.</p>
+<p>I was instructed to use a lot of tutorials and courses to help better my animation skills. This animation was used to improve my character animation skills.</p>
+</div>
+</div>
+
+<!-- MINDBLOWING -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/Z-erl6MpFTY/maxresdefault.jpg"></div>
+<div class="project-header"><h3>MINDBLOWING</h3></div>
+<div class="project-info"><p>Product shoot with animated overlays.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/Z-erl6MpFTY" allowfullscreen></iframe>
+<p>After my first day intergrating myself into the companies workflow I got my first assignment. Eelke (an intern) and me got the assignment to make a product shoot and intergrate animation into the video.</p>
+<p>We came up with the idea to shoot a video of Eelke’s guitar and I would animate over it. This is my first time having worked with a green screen so that was very exciting.</p>
+</div>
+</div>
+
+<!-- DAY OF THE MOTHER TONGUE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/AK05-w6ElGE/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Day of the Mother Tongue</h3></div>
+<div class="project-info"><p>Client awareness animation.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/AK05-w6ElGE" allowfullscreen></iframe>
+<p>After having finished my first project and working a little on my internship report I got my first client assignment. My intern supervisor came to me with the project to make a short animation for the Day of the Mother Tongue.</p>
+<p>I made the entire animation myself. First I created a concept and some sketches and after having it approved I got to work.</p>
+</div>
+</div>
+
+<!-- OR DOKTERSZORG -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/tNbmJJ-7Drk/maxresdefault.jpg"></div>
+<div class="project-header"><h3>OR Dokterszorg Animation</h3></div>
+<div class="project-info"><p>Client explainer animation.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/tNbmJJ-7Drk" allowfullscreen></iframe>
+<p>For this animation I actually got to meet up with the client. My two supervisors and I went to the client to get information about the animation they wanted. I got full control for the animation even down to the voice over.</p>
+<p>The client wanted to keep the animation simple and wanted me to use the characters they already had in use. The characters were very badly made so I had to recreate them as best as I could.</p>
+<p>The voice over is made by me with my own voice.</p>
+</div>
+</div>
+
+<!-- OR ODG -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/6TjwQZfUDIM/maxresdefault.jpg"></div>
+<div class="project-header"><h3>OR ODG Animation</h3></div>
+<div class="project-info"><p>Second client explainer animation.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/6TjwQZfUDIM" allowfullscreen></iframe>
+<p>After a successful animation and happy client I got assigned a similair animation for a different company. This company didn’t have any characters or other assets I should use, this means I made this entire animation down to the illustations.</p>
+<p>I also got complete control for this animation which was very fun.</p>
+</div>
+</div>
+
+<!-- WORLD BOOK DAY -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/ugv9i2iKf1U/maxresdefault.jpg"></div>
+<div class="project-header"><h3>World Book Day</h3></div>
+<div class="project-info"><p>Pop-up book animation concept.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/ugv9i2iKf1U" allowfullscreen></iframe>
+<p>Animating this animation was a very fun progress. This is a concept made in collaboration with Job my supervisor. I got full control on the animation per usual.</p>
+<p>I had a very fun time looking for a way to animate a book that has a pop up picture come out of it.</p>
+<p>In the end I am very proud of this animation as it was a challenge to create it and I have learned a lot of new techniques creating it.</p>
+</div>
+</div>
+
+<!-- DAY AGAINST RACISM -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/Dn4r6kXDqYM/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Day Against Racism</h3></div>
+<div class="project-info"><p>Walking character challenge.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/Dn4r6kXDqYM" allowfullscreen></iframe>
+<p>This is another short animation for Biblionet. In this one I got to challenge myself immensely. I had complete creative control for this one as usual. I decided to challenge myself by making a walking character.</p>
+<p>This was insanely hard but I am quite proud of the end product. The message was also a challenge to decide because this is a very broad topic to cover. I created the assets myself.</p>
+</div>
+</div>
+
+<!-- BIG MATHS DAY -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/4Lbri5REMVo/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Big Maths Day</h3></div>
+<div class="project-info"><p>Educational kids animation.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/4Lbri5REMVo" allowfullscreen></iframe>
+<p>This animation was directed at children. The Big Maths Day is a day where children celebrate math with a fun themed day. This year the theme was recycling.</p>
+<p>I replicated their art style by making a funny robot animation that was drawn by hand in combination with digital drawing.</p>
+</div>
+</div>
+
+<!-- DODENHERDENKING -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/dwaPbPWO6XA/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Dodenherdenking Animation</h3></div>
+<div class="project-info"><p>Memorial animation.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/dwaPbPWO6XA" allowfullscreen></iframe>
+<p>The 4th of May is a day in the Netherlands where we remember all the fallen victims to the 2nd world war.</p>
+<p>I created an animation where the flag goes half-mast as a sign of respect and remembrance.</p>
+</div>
+</div>
+
+<!-- ANNIE MG SCHMIDT -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/RA1hBy7zFY4/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Annie M.G. Schmidt Dag</h3></div>
+<div class="project-info"><p>Children’s literature tribute.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/RA1hBy7zFY4" allowfullscreen></iframe>
+<p>This is an animation in honor of the amazingly talented Annie M.G. Schmidt.</p>
+<p>I was not allowed to use the drawings made by Fiep Westendorp, so I had to create an original concept.</p>
+</div>
+</div>
+
+<!-- 70TH ANNIVERSARY -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/AO1Ycx6f27k/maxresdefault.jpg"></div>
+<div class="project-header"><h3>70th Anniversary Biblionet</h3></div>
+<div class="project-info"><p>3D Illustrator experiment.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/AO1Ycx6f27k" allowfullscreen></iframe>
+<p>This animation is for the 70th anniversary of Biblionet.</p>
+<p>I used 3D tools in Adobe Illustrator for the first time to create the balloons.</p>
+</div>
+</div>
+
+<!-- KEY TO SPACE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/y5Au4YzS-qA/maxresdefault.jpg"></div>
+<div class="project-header"><h3>The Key to Space</h3></div>
+<div class="project-info"><p>Animation principles training.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/y5Au4YzS-qA" allowfullscreen></iframe>
+<p>This animation was made with the help of a tutorial and taught me anticipation and timing.</p>
+<p>The end product makes me very happy because I can see how much progress I made.</p>
+</div>
+</div>
+
+<!-- MAKE MAGIC -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="https://img.youtube.com/vi/YjwJI3PZ6kw/maxresdefault.jpg"></div>
+<div class="project-header"><h3>Make Magic</h3></div>
+<div class="project-info"><p>Animating with arcs.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/YjwJI3PZ6kw" allowfullscreen></iframe>
+<p>I made this animation right after making The Key to Space.</p>
+<p>It represents having fun while animating and experimenting with arcs.</p>
+</div>
+</div>
+
+</section>
+
+<footer>© 2025 Jip Hugo Vrouwenvelder. All rights reserved.</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<button class="close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+
+<script>
+function openModal(card){
+document.getElementById("modalTitle").innerText=card.querySelector("h3").innerText;
+document.getElementById("modalBody").innerHTML=card.querySelector(".project-details").innerHTML;
+document.getElementById("projectModal").style.display="flex";
+document.body.style.overflow="hidden";
+}
+function closeModal(e){
+if(!e||e.target.id==="projectModal"){
+document.getElementById("projectModal").style.display="none";
+document.getElementById("modalBody").innerHTML="";
+document.body.style.overflow="auto";
+}}
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape") closeModal();
+});
+</script>
+
+</body>
+</html>

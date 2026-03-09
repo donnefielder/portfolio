@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Illustrator Projects - Jip Hugo Vrouwenvelder</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#fafafa;margin:0}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{background:white;padding:30px 20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.1);font-family:"Comic Sans MS",cursive}
+nav ul{display:flex;justify-content:center;list-style:none;padding:0;margin:20px 0 0;gap:25px}
+nav a{padding:8px 12px;border-radius:5px}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+
+.dropdown-content{
+display:none;
+position:absolute;
+top:100%;
+left:50%;
+transform:translateX(-50%);
+background:white;
+box-shadow:0 2px 8px rgba(0,0,0,.15);
+border-radius:6px;
+min-width:240px;
+z-index:100;
+text-align:center
+}
+.dropdown-content a{
+display:block;
+padding:10px 15px;
+white-space:nowrap
+}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* GRID */
+.projects-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:60px;
+padding:60px 40px 100px;
+max-width:1400px;
+margin:auto
+}
+
+/* PROJECT CARDS */
+.project-card{
+background:white;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+transition:.3s;
+cursor:pointer
+}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+.image-wrap{position:relative;overflow:hidden}
+.image-wrap img{width:100%;height:420px;object-fit:cover;transition:.5s}
+.project-card:hover img{transform:scale(1.06)}
+
+.image-wrap::after{
+content:"▶ View Project";
+position:absolute;inset:0;
+background:rgba(0,0,0,.45);
+color:white;font-size:30px;
+font-family:"Comic Sans MS",cursive;
+display:flex;align-items:center;justify-content:center;
+opacity:0;transition:.35s
+}
+.project-card:hover .image-wrap::after{opacity:1}
+
+.project-header{padding:28px 40px 10px;font-family:"Comic Sans MS",cursive}
+.project-header h3{margin:0;font-size:28px}
+.project-info{padding:0 40px 30px;font-size:17px;color:#555}
+
+/* MODAL */
+.modal-overlay{
+position:fixed;inset:0;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(8px);
+display:none;align-items:center;justify-content:center;z-index:999
+}
+.modal-content{
+background:white;
+width:96vw;height:94vh;border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+display:flex;flex-direction:column;
+animation:pop .25s ease-out
+}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-header{
+padding:20px 40px;
+display:flex;justify-content:space-between;align-items:center;
+font-family:"Comic Sans MS",cursive;border-bottom:1px solid #eee
+}
+.close-btn{font-size:30px;cursor:pointer;border:none;background:none}
+
+.modal-body{
+padding:35px 80px 60px;
+line-height:1.8;
+font-size:18px;
+overflow-y:auto
+}
+
+/* ✅ TITLES IN COMIC SANS */
+.modal-body h3{
+font-family:"Comic Sans MS",cursive;
+margin-top:40px
+}
+
+.modal-body img{
+width:100%;
+max-width:900px;
+display:block;
+margin:0 auto 40px;
+border-radius:12px
+}
+
+footer{
+background:white;text-align:center;padding:20px;margin-top:60px;
+box-shadow:0 -2px 5px rgba(0,0,0,.1)
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+.projects-container{grid-template-columns:1fr;padding:40px 20px}
+.image-wrap img{height:300px}
+.modal-body{padding:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Illustrator Projects</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="projects-container">
+
+<!-- 1 DESIGNING MYSELF -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+<img src="/static/Illustrator/JIP.png">
+</div>
+<div class="project-header"><h3>Designing myself</h3></div>
+<div class="project-info"><p>Character design based on myself for an animation project.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Illustrator/JIP.png">
+<p>A fun and exciting challenge, creating a character based on myself. Two interns and I were working on an animation project based around the process of making an animation.</p>
+
+<p>For this particular animation we chose the character to be based on me. So I thought it would be fun to create myself. It was challenging to design but I used a lot of references and the style board we created came in use to choose the type of clothing my character would wear.</p>
+</div>
+</div>
+
+<!-- 2 GANGSTER PABLO -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+<img src="/static/Illustrator/PENGUIN.png">
+</div>
+<div class="project-header"><h3>Gangster Pablo</h3></div>
+<div class="project-info"><p>My first Illustrator character design.</p></div>
+<div class="project-details" style="display:none;">
+<img src="/static/Illustrator/PENGUIN.png">
+<p>This was my first-ever Illustrator design, created during my internship when I had some spare time. I wanted to challenge myself and test my design skills by making a fun, personal project. Since I love penguins and enjoy creating cute characters, I decided to design a penguin holding a bat, something playful yet simple.</p>
+
+<p>Working on this piece helped me explore Illustrator’s tools, from shape-building to refining details with the pen tool. It was a great learning experience in character design, and seeing the final result made me proud of my progress. This was my first fully completed Illustrator character, and it motivated me to keep improving and experimenting with new ideas.</p>
+</div>
+</div>
+
+<!-- 3 DUMB WAYS TO BURN -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+<img src="/static/Illustrator/Dumb Ways to Burn.png">
+</div>
+<div class="project-header"><h3>Dumb Ways to Burn</h3></div>
+<div class="project-info"><p>Character inspired by Dumb Ways to Die.</p></div>
+<div class="project-details" style="display:none;">
+
+<!-- ✅ TOP IMAGE JUST LIKE OTHER PROJECTS -->
+<img src="/static/Illustrator/Dumb Ways to Burn.png">
+
+<h3>Summary</h3>
+
+<p>For this project, I set out to create a character inspired by the viral video Dumb Ways to Die, aiming to capture its quirky and colorful style while adding my own creative spin. I began by sketching different designs, searching for a balance between cuteness and chaos that fit the tone of the original animation. After refining my ideas, I settled on a character with exaggerated features, big expressive eyes and a goofy expression, that would enhance the humor and charm of the animation. I carefully chose vibrant colors and expressive facial details to bring out the lighthearted, playful energy that made Dumb Ways to Die so iconic.</p>
+
+<p>While working on the character, I had to find the right balance between inspiration and originality. Since the Dumb Ways to Die style was already so recognizable, I needed to make sure my design wasn’t just a copy but something that felt fresh while still evoking the essence of the original. I experimented with different shapes, expressions, and small design choices that made my character stand out while still feeling like it belonged in the world of the video.</p>
+
+<p>Just as I thought I had everything under control, disaster struck. My entire animation file got corrupted. Weeks of work vanished in an instant. I managed to salvage only the first 12 seconds of footage, but the remaining 28 seconds were completely lost. With only four days left before the deadline, I had no choice but to start over and grind out the rest of the animation from scratch.</p>
+
+<p>This setback forced me to work faster and more efficiently than ever before. I had to streamline my workflow, making sure I recreated the lost sections as accurately as possible while still keeping the quality high. On top of that, I was working with a team that had little to no experience with After Effects or Illustrator, which added another layer of difficulty. I had to guide them through the software while also keeping up with my own work, ensuring that every scene fit seamlessly together.</p>
+
+<h3>Feedback and Iteration</h3>
+
+<p>Despite the pressure, I relied on feedback from my peers to keep the animation on track. Their input helped me fine-tune the character’s movements and expressions, ensuring they remained engaging and fun. I also had to constantly adjust my workflow to accommodate my teammates' skill levels, finding ways to simplify complex tasks while maintaining the overall quality of the animation.</p>
+
+<h3>What I Learned</h3>
+
+<p>This project taught me more than just character design. It was a crash course in problem-solving under extreme pressure. I learned the importance of backing up files, the value of adaptability, and how to guide a team with varying skill levels toward a shared creative vision.</p>
+
+<p>Most importantly, I learned that setbacks don’t define a project. How you recover from them does. Even though the corruption of my animation was a massive challenge, I was able to push through and deliver a finished piece on time. This experience gave me confidence in my ability to handle unexpected obstacles and find creative solutions under tight deadlines.</p>
+
+<h3>Next Steps</h3>
+
+<p>Now that the animation is complete, I want to take what I’ve learned and apply it to future projects, focusing on improving my efficiency and team management skills. I also want to refine my character animation techniques further, exploring ways to make movements feel even more dynamic and expressive.</p>
+
+<p>Despite the challenges, this project reinforced my passion for animation and storytelling. Seeing my character come to life after all the hurdles made every second of work worth it.</p>
+
+<h3>The Progress</h3>
+
+<p><em>Click the arrow below the image for information</em></p>
+
+<h3>Character Ideas</h3>
+
+<p>For this character concept sketch, I focused on defining the core features and personality of the character. I began by exploring different silhouettes and postures to convey their mood and role in the story. This sketch captures the initial design with attention to key aspects like body proportions, facial expressions, and clothing.</p>
+
+<p>I also included notes on color choices and textures, ensuring the character's visual identity aligned with the overall aesthetic. The goal was to lay a solid foundation for the character, setting the stage for further refinements in the next steps of the design process.</p>
+
+<h3>Simple Storyboard</h3>
+
+<p>For the first storyboard, I focused on laying the foundation of our parody video. I carefully planned the composition, camera angles, and character actions to ensure a strong visual narrative. The storyboard sketch illustrated a key moment in the video, helping the team understand the intended mood and pacing.</p>
+
+<p>By adding notes on dialogue and movement, I made sure that everyone involved could clearly follow the scene’s direction. This step was crucial in aligning our creative vision before we began filming.</p>
+
+<h3>Simple Storyboard</h3>
+
+<p>The second storyboard built upon the first by refining specific actions and transitions between scenes. I used this storyboard to highlight an important comedic moment, ensuring the timing and framing were just right for maximum impact.</p>
+
+<p>With detailed annotations on character positioning and camera movement, this storyboard helped streamline the filming process. It served as a visual guide that allowed us to execute the scene efficiently while maintaining consistency in the overall production.</p>
+
+<h3>Research - Game Research at the Spellekijn</h3>
+
+<p>Within our team, we worked closely together to conduct research and refine our project. While most of our research was done internally, we also took opportunities to communicate with external parties to gain additional insights. Even though these interactions were limited, they played a valuable role in improving our collaboration and communication skills.</p>
+
+<p>During our meeting with the client, I actively listened to their feedback and suggestions while also sharing my own ideas to enhance the project. This experience strengthened my ability to communicate with external stakeholders and taught me how to collaborate effectively with people outside my immediate team.</p>
+
+<p>Additionally, our visits to the game store to test our project provided valuable experience in engaging with customers and industry experts. By listening to their feedback and answering their questions, I developed my ability to communicate clearly and respond to the needs of others.</p>
+
+<p>Although our interactions with external parties were not extensive, they significantly contributed to improving my communication skills and made me more aware of the importance of effective collaboration. Moving forward, I will continue to seek opportunities to engage with external stakeholders to further develop my skills and maximize my contributions to collaborative projects.</p>
+
+<h3>The Pitch</h3>
+
+<h3>Practice Pitch</h3>
+
+<p>As part of our animation project, my teammates and I dedicated time to refining our presentation skills before facing a larger audience. We rehearsed multiple times, ensuring that our message was clear and that we could confidently present our animation project.</p>
+
+<p>Practicing together helped us refine our explanations, coordinate our speaking parts, and support each other in improving our delivery. This preparation was crucial in building our confidence for the actual pitches.</p>
+
+<h3>Class Pitch</h3>
+
+<p>When the day of the class presentation arrived, we all felt a mix of excitement and nervousness, but we knew we were well-prepared. During our presentation, we explained our animation project in a clear and engaging manner, making sure our ideas were easily understood.</p>
+
+<p>Knowing that we had each other’s support helped me present my section with confidence. After our pitch, we were thrilled to learn that our classmates had voted us as the winning team. This recognition gave us an extra boost of confidence for the next step: presenting to the client.</p>
+
+<h3>Client Pitch</h3>
+
+<p>Presenting to the client was an entirely new challenge. However, thanks to the positive experience with our classmates, we entered the pitch with confidence. We clearly explained our animation project, answered the client's questions, and shared our vision for the project.</p>
+
+<p>To our great excitement, we were once again chosen as the winning team. This validation confirmed that our preparation and delivery had been effective. Although the experience was nerve-wracking at times, I felt incredibly proud and accomplished, knowing that we had successfully communicated our project in a professional and engaging way.</p>
+
+</div>
+</div>
+
+</section>
+
+<footer>© 2025 Jip Hugo Vrouwenvelder. All rights reserved.</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<button class="close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+
+<script>
+function openModal(card){
+document.getElementById("modalTitle").innerText=card.querySelector("h3").innerText;
+document.getElementById("modalBody").innerHTML=card.querySelector(".project-details").innerHTML;
+document.getElementById("projectModal").style.display="flex";
+document.body.style.overflow="hidden";
+}
+
+function closeModal(e){
+if(!e||e.target.id==="projectModal"){
+document.getElementById("projectModal").style.display="none";
+document.getElementById("modalBody").innerHTML="";
+document.body.style.overflow="auto";
+}}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){closeModal();}
+});
+</script>
+
+</body>
+</html>

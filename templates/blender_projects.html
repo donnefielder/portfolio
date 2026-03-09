@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blender Projects - Jip Hugo Vrouwenvelder</title>
+
+<style>
+body{font-family:Arial,sans-serif;background:#fafafa;margin:0}
+a{text-decoration:none;color:black}
+
+/* HEADER */
+header{background:white;padding:30px 20px;text-align:center;box-shadow:0 2px 5px rgba(0,0,0,.1);font-family:"Comic Sans MS",cursive}
+nav ul{display:flex;justify-content:center;list-style:none;padding:0;margin:20px 0 0;gap:25px}
+nav a{padding:8px 12px;border-radius:5px}
+nav a:hover{background:#f0f0f0}
+.dropdown-arrow{transition:.3s;display:inline-block}
+nav li:hover .dropdown-arrow{transform:rotate(180deg)}
+.dropdown-content{display:none;position:absolute;top:100%;left:0;background:white;box-shadow:0 2px 8px rgba(0,0,0,.15);border-radius:6px;min-width:200px;z-index:100}
+.dropdown-content a{
+display:block;
+padding:10px 15px;
+white-space:nowrap; /* PREVENT LINE BREAK */
+}
+nav ul li{position:relative}
+nav li:hover .dropdown-content{display:block}
+.dropdown-content a:hover{background:#eee}
+
+/* PROJECT GRID — TWO COLUMNS */
+.projects-container{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:60px;
+padding:60px 20px 100px;
+max-width:1400px;
+margin:auto
+}
+
+.project-card{background:white;width:100%;border-radius:20px;overflow:hidden;box-shadow:0 5px 15px rgba(0,0,0,.15);transition:.3s;cursor:pointer}
+.project-card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,.3)}
+
+.image-wrap{position:relative;overflow:hidden}
+.image-wrap img{width:100%;height:420px;object-fit:cover;transition:.5s}
+.project-card:hover img{transform:scale(1.06)}
+
+.image-wrap::after{
+content:"▶ View Project";position:absolute;inset:0;
+background:rgba(0,0,0,.45);color:white;font-size:30px;
+font-family:"Comic Sans MS",cursive;display:flex;
+align-items:center;justify-content:center;opacity:0;transition:.35s
+}
+.project-card:hover .image-wrap::after{opacity:1}
+
+.project-header{padding:28px 40px 10px;font-family:"Comic Sans MS",cursive}
+.project-header h3{margin:0;font-size:30px}
+.project-info{padding:0 40px 30px;font-size:18px;color:#555}
+
+/* MODAL */
+.modal-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,.65);
+backdrop-filter:blur(8px);
+display:none;align-items:center;justify-content:center;z-index:999
+}
+.modal-content{
+background:white;
+width:96vw;
+height:94vh;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+display:flex;
+flex-direction:column;
+animation:pop .25s ease-out
+}
+@keyframes pop{from{transform:scale(.96);opacity:0}to{transform:scale(1);opacity:1}}
+
+.modal-header{
+padding:20px 40px;
+display:flex;justify-content:space-between;align-items:center;
+font-family:"Comic Sans MS",cursive;border-bottom:1px solid #eee;
+flex-shrink:0
+}
+.close-btn{font-size:30px;cursor:pointer;border:none;background:none}
+
+.modal-body{
+padding:35px 80px 60px;
+line-height:1.8;
+font-size:18px;
+overflow-y:auto;
+}
+.modal-body h3{font-family:"Comic Sans MS",cursive;margin-top:40px}
+
+/* TALLER VIDEO */
+.modal-body iframe{
+width:100%;
+height:720px;
+border-radius:12px;
+margin-bottom:30px
+}
+
+/* HERO IMAGE — SMALLER & CENTERED */
+.modal-hero-img{
+width:80%;
+max-width:900px;
+display:block;
+margin:0 auto 30px;
+border-radius:12px;
+cursor:zoom-in
+}
+
+/* FULLSCREEN IMAGE */
+.image-viewer{
+position:fixed;inset:0;background:rgba(0,0,0,.95);
+display:none;align-items:center;justify-content:center;z-index:2000
+}
+.image-viewer img{max-width:96%;max-height:96%;border-radius:10px}
+
+footer{
+background:white;text-align:center;padding:20px;margin-top:60px;
+box-shadow:0 -2px 5px rgba(0,0,0,.1)
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.projects-container{grid-template-columns:1fr}
+.image-wrap img{height:300px}
+.modal-body iframe{height:360px}
+.modal-body{padding:25px}
+.modal-hero-img{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Blender Projects</h1>
+<nav>
+<ul>
+<li><a href="/">Home</a></li>
+<li>
+<a href="#">Projects <span class="dropdown-arrow">▼</span></a>
+<div class="dropdown-content">
+<a href="/blender-projects">Blender Projects</a>
+<a href="/after-effects">After Effects Projects</a>
+<a href="/illustrator">Illustrator Projects</a>
+<a href="/photoshop">Photoshop Projects</a>
+<a href="/internship">Internship Projects</a>
+<a href="/school">School Projects</a>
+</div>
+</li>
+<li><a href="/about">About Me</a></li>
+<li><a href="/contact">Contact Me</a></li>
+</ul>
+</nav>
+</header>
+
+<section class="projects-container">
+
+<!-- 1. ANTHEMS -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+  <img src="/static/Boy Anthem thumbnail_Blender Projects.png">
+</div>
+<div class="project-header"><h3>Anthems for a 17 Year Old Girl</h3></div>
+<div class="project-info"><p>A surreal 3D music video Sijb and I made.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/WzyUvm3RltM" allowfullscreen></iframe>
+
+<h3>Storyboards</h3>
+<p>For our animation assignment, we had to create a music video that incorporated elements of surrealism. From the very start, we knew we wanted to take inspiration from I Saw the TV Glow, a film that deeply resonated with us. The eerie, dreamlike aesthetic fit perfectly with our vision, so we chose a song from the movie as the foundation for our music video.</p>
+
+<p>Our creative process began with brainstorming and sketching. On the first day, we filled our sketchbooks with rough ideas, exploring different visual styles and concepts. Once we had a direction, we refined our ideas into a series of storyboards, mapping out key moments and transitions in the animation.</p>
+
+<p>These storyboards helped us visualize the eerie and unsettling atmosphere we wanted to create. We played with perspective, symbolism, and distorted environments to enhance the surreal feeling. The imagery we developed, such as the eerie faces, confined spaces, and flickering lights were all designed to evoke a sense of unease and mystery.</p>
+
+<p>This project was an exciting challenge, pushing us to think beyond conventional storytelling and embrace a more abstract, atmospheric approach. Seeing the final animation come to life was incredibly rewarding, and we are proud of the unsettling, dreamlike world we were able to create.</p>
+
+<h3>Inspiration</h3>
+<p>Our music video draws heavily from some of our favorite films and shows, all of which explore surrealism in unique and striking ways.</p>
+
+<p>One of the biggest influences was I Saw the TV Glow, a movie that means a lot to me personally. Its use of symbolism, haunting music, and incredible acting create an atmosphere that lingers long after watching. The film leans heavily into surreal storytelling, blurring the lines between reality and fiction something we aimed to capture in our own work. Naturally, we also chose a song from the movie to serve as the soundtrack, further tying our project to its eerie and dreamlike essence.</p>
+
+<p>Another major inspiration was Severance, which is quickly becoming one of, if not my absolute favorite, TV shows. Its sci-fi world and unsettling, dreamlike quality make it the perfect example of how surrealism can be used to create both intrigue and unease. I’m obsessed with the show and constantly talk about it, so it was a must-have influence in our project. A direct nod to Severance appears in the opening of our video, where a flying squid-like version of our friend Jelle drifts by, an idea directly inspired by the floating balloon sequence from the show’s intro.</p>
+
+<p>Alongside these, we also drew from other surrealist works that played with distortion, looping visuals, and eerie, liminal spaces. These inspirations helped us craft a world that feels detached from reality yet strangely familiar, immersing the viewer in a space that is both fascinating and unsettling.</p>
+
+<p>Through these influences, we created a piece that doesn’t just tell a story but evokes a feeling. A sense of being lost in a world that doesn’t quite make sense, much like the media that inspired us.</p>
+
+<h3>The Map</h3>
+<p>Before diving into the animation process, Sijb and I created a detailed map to plan out how the video would play out. After finishing our storyboards, we wanted a clear visual representation of the flow of our animation—how each scene connected, how movements transitioned, and how different animation techniques would blend together. This map acted as our creative blueprint, allowing us to structure our surreal vision while still leaving room for improvisation and experimentation.</p>
+
+<p>Mapping everything out beforehand proved to be incredibly useful. It helped us stay organized throughout the two weeks of intense work, preventing us from getting lost in the complexity of our multi-technique approach. By visualizing the pacing, key moments, and transitions ahead of time, we were able to work more efficiently and maintain a cohesive feel throughout the animation.</p>
+
+<p>This experience taught me the importance of pre-production planning in animation. Having a solid foundation not only saved us time but also gave us more creative freedom when animating because we weren’t constantly second-guessing the structure. I also realized how crucial it is to balance planning with flexibility—while the map provided direction, we still allowed ourselves to refine and adjust as new ideas emerged during production.</p>
+</div>
+</div>
+
+<!-- 2. HERO POSE -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap"><img src="/static/Hero Pose thumbnail.png"></div>
+<div class="project-header"><h3>Hero Pose Scene</h3></div>
+<div class="project-info"><p>A cinematic scene inspired by Zelda and Gravity Falls.</p></div>
+<div class="project-details" style="display:none;">
+
+<img src="/static/Hero Pose thumbnail.png" class="modal-hero-img" onclick="openImage(this.src)">
+
+<h3>The Idea</h3>
+<p>For the "The Hero Pose" project, my goal was to learn how to build 3D scenes, create simple character models, and rig them, focusing on the immersive qualities of the scene and the characters within the world of Zelda. This project was a valuable learning experience, allowing me to dive deeper into scene composition, character creation, and atmosphere-building.</p>
+
+<h3>The Process and Challenges</h3>
+<p>In this project, I worked on designing a 3D scene inspired by the world of Zelda, and I wanted to focus on creating characters that fit within this world. For the character design aspect, I chose to model Bill, a character from Gravity Falls, entirely by myself. To save time and focus more on the design, I used pre-existing textures from a website. This allowed me to put my energy into perfecting the character’s form, style, and how it fit within the Zelda-inspired environment.</p>
+
+<p>I also created and rigged another character that I placed in the scene. This character was animated to walk around, adding life and movement to the world I built. Rigging the character was an essential part of the project, and I learned a lot about how to create functional rigs for simple models. However, the biggest challenge was balancing the complexity of rigging with the simplicity of the characters themselves. The process taught me how to be efficient with my rigging techniques while maintaining the quality of movement I wanted for the scene.</p>
+
+<p>Creating the scene itself was another major learning point. I focused heavily on atmosphere, aiming to build a world that felt immersive and true to the Zelda universe. I experimented with lighting, camera angles, and environmental elements to create a sense of depth and presence within the scene. One of the challenges here was learning how to use these tools to evoke the right atmosphere without overwhelming the simplicity of the characters and the scene. It was all about finding the right balance between detail and clarity.</p>
+
+<h3>Feedback and Iteration</h3>
+<p>Throughout the project, I relied on feedback from friends and classmates, particularly regarding the atmosphere and the character integration within the scene. They provided valuable insights into how I could improve the lighting and camera work to enhance the mood and make the scene feel more dynamic. This feedback loop helped me refine the atmosphere and adjust the rigging to ensure the character’s movements were smooth and believable. I also watched several YouTube tutorials on rigging and scene composition to understand the technical aspects of building a 3D world. These tutorials guided me through the process of setting up rigs for characters and improving the overall scene design.</p>
+
+<h3>What I Learned</h3>
+<p>This project taught me how important it is to focus on scene-building and atmosphere when creating 3D worlds. While I had experience in modeling, this project pushed me to think beyond individual elements and consider how they all come together to form a cohesive and engaging environment. I learned how to use lighting, textures, and camera work to build atmosphere, creating a world that feels immersive and alive.</p>
+
+<p>In terms of character creation, working on Bill and rigging the other character taught me a lot about efficient rigging techniques and how to make characters move naturally within a scene. Although the characters were simple, the process of rigging them gave me a deeper understanding of character animation and how important it is to plan movements that fit within the broader context of the scene. Finally, this project taught me the value of leveraging external resources, like using textures from a website, to focus on the areas where I wanted to grow the most. By doing this, I was able to dedicate more time to learning the skills I needed to improve, such as scene composition and rigging.</p>
+
+<h3>Next Steps</h3>
+<p>Moving forward, I want to build on what I learned in this project by creating more complex scenes and experimenting with character rigging on a larger scale. Now that I have a better understanding of how to build atmosphere and structure a scene, I plan to push my skills further by creating more intricate environments and characters with more advanced rigging setups.</p>
+
+<h3>Conclusion</h3>
+<p>In conclusion, "The Hero Pose" project was an invaluable experience that helped me grow as a 3D artist. It gave me the foundational skills I need to build immersive scenes, create simple but effective character models, and rig them for animation, all crucial skills as I continue working towards my goal of becoming a character animator.</p>
+
+</div>
+</div>
+
+<!-- 3. SODA CAN -->
+<div class="project-card" onclick="openModal(this)">
+<div class="image-wrap">
+  <img src="/static/Soda can thumbnail_Blender projects.png">
+</div>
+<div class="project-header"><h3>Energy Drink Commercial</h3></div>
+<div class="project-info"><p>A 3D animated commercial I made using Blender.</p></div>
+<div class="project-details" style="display:none;">
+<iframe src="https://www.youtube.com/embed/Z-BC-3KktH0" allowfullscreen></iframe>
+
+<h3>The idea</h3>
+<p>My goal was to learn how to model and texture 3D objects, starting with a soda can as my first project. This project served as an introduction to foundational skills in texturing and animation, focusing on creating a visually clear and accessible design. Additionally, I experimented with Blender’s geometry nodes for the first time, which introduced me to a new level of control over textures and materials. Once the texturing was complete, I transitioned into animating the can, marking my first experience with animation in Blender.</p>
+
+<h3>The Process and Challenges</h3>
+<p>To achieve this goal, I started by modeling a detailed 3D soda can. While the shape itself was straightforward, the real challenge lay in applying textures and materials realistically. This was my first time working extensively with Blender’s node system, which I used to create realistic textures and materials. Through procedural texturing, I was able to experiment with dynamic reflections, metallic sheens, bump maps, and surface details like condensation to enhance realism.</p>
+
+<p>Using geometry nodes introduced a steep learning curve, as I had never worked with nodes before. I had to go through a lot of trial and error to get the textures to behave as expected. One major challenge was ensuring that the can’s design was visually accessible and easy to interpret. Even though a soda can is a simple object, I wanted to make sure that the textures were bold and clear, ensuring that the design would be instantly recognizable to a diverse audience.</p>
+
+<p>Once the texturing phase was complete, I moved on to animating the soda can, which was another first for me in Blender. I began by setting up keyframes to control the motion of the can and gradually layered in more advanced techniques such as timing adjustments, easing curves, and subtle motion effects to make the animation feel more natural and engaging. Initially, my animation felt too static and lacked personality, so I incorporated techniques like a bounce effect and refined the movement to create a more dynamic and lively animation.</p>
+
+<h3>Feedback and Iteration</h3>
+<p>Throughout this project, I relied on YouTube tutorials to understand both texturing and animation techniques in Blender. These tutorials were instrumental in teaching me the basics, which I then applied to my own work.</p>
+
+<p>Additionally, I sought feedback from experienced classmates and online forums. Their insights helped me refine my node setups, adjust reflections, and improve the overall realism of my textures. Feedback on my animation also played a crucial role in refining the movement, leading me to fine-tune my timing and easing curves for a smoother, more natural motion.</p>
+
+<h3>What I Learned</h3>
+<p>This project provided me with essential hands-on experience in both texturing and animation. I learned how to create and apply realistic textures using Blender’s node system, how lighting impacts the final appearance of materials, and how procedural workflows can enhance a model’s visual depth.</p>
+
+<p>On the animation side, I gained a fundamental understanding of keyframing, motion dynamics, and the importance of timing. I also learned that creating textures is about more than just making something look good—it’s about making it clear, recognizable, and accessible. This principle will be crucial for future projects, particularly when working on character models like the gorilla I am developing.</p>
+
+<h3>Next Steps</h3>
+<p>With the modeling, texturing, and initial animation phase complete, my next goal is to create a full scene where the soda can interacts with its environment. I want to experiment with more advanced animation techniques, including simulations for liquid splashes and condensation effects, to push my skills further. This will allow me to explore the storytelling potential of animation and refine my ability to bring 3D objects to life.</p>
+
+<h3>Conclusion</h3>
+<p>Working on this soda can project has been an invaluable experience, giving me my first in-depth exposure to both Blender’s texturing and animation workflows. It not only helped me develop a strong foundation in using geometry nodes but also set the stage for more complex projects in the future. Through iteration, experimentation, and feedback, I’ve gained confidence in my ability to create visually effective 3D models and animations, and I’m excited to continue pushing my skills forward.</p>
+</div>
+</div>
+
+</section>
+
+<footer>© 2025 Jip Hugo Vrouwenvelder. All rights reserved.</footer>
+
+<!-- MODALS -->
+<div class="modal-overlay" id="projectModal" onclick="closeModal(event)">
+<div class="modal-content" onclick="event.stopPropagation()">
+<div class="modal-header">
+<h2 id="modalTitle"></h2>
+<button class="close-btn" onclick="closeModal()">✕</button>
+</div>
+<div class="modal-body" id="modalBody"></div>
+</div>
+</div>
+
+<div class="image-viewer" id="imageViewer" onclick="closeImage()">
+<img id="viewerImg">
+</div>
+
+<script>
+function openModal(card){
+document.getElementById("modalTitle").innerText=card.querySelector("h3").innerText;
+document.getElementById("modalBody").innerHTML=card.querySelector(".project-details").innerHTML;
+document.getElementById("projectModal").style.display="flex";
+document.body.style.overflow="hidden";
+}
+
+function closeModal(e){
+if(!e||e.target.id==="projectModal"){
+document.getElementById("projectModal").style.display="none";
+document.getElementById("modalBody").innerHTML="";
+document.body.style.overflow="auto";
+}}
+
+function openImage(src){
+document.getElementById("viewerImg").src=src;
+document.getElementById("imageViewer").style.display="flex";
+}
+
+function closeImage(){
+document.getElementById("imageViewer").style.display="none";
+document.getElementById("viewerImg").src="";
+}
+
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){
+closeModal();
+closeImage();
+}
+});
+</script>
+
+</body>
+</html>
