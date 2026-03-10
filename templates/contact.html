@@ -174,10 +174,9 @@ margin-top:60px
 
 <form method="post" action="https://formsubmit.co/hugo.vrouwenvelder@gmail.com">
 
-  <!-- FormSubmit config -->
   <input type="hidden" name="_subject" value="New message from your portfolio!">
   <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_next" value="https://jip-portfolio.onrender.com/contact?sent=true">
+  <input type="hidden" name="_next" value="https://jiphugoportfolio.onrender.com/thanks">
 
   <div>
     <label for="name">Your Name</label><br>
@@ -197,17 +196,6 @@ margin-top:60px
   <button type="submit">Send Message</button>
 
 </form>
-
-<!-- Success message -->
-<div id="successMsg" style="display:none; text-align:center; margin-top:30px; color:green; font-size:18px; font-family:'Comic Sans MS',cursive;">
-  ✅ Message sent! I'll get back to you soon.
-</div>
-
-<script>
-  if(window.location.search.includes('sent=true')) {
-    document.getElementById('successMsg').style.display = 'block';
-  }
-</script>
 
 </section>
 
